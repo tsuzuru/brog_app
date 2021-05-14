@@ -1,0 +1,26 @@
+<div class="container">
+  
+  <div class = "col-2 my-5 title" >
+    <h4>カテゴリ編集</h4>
+  </div>
+  
+      <% if @category.errors.any? %>
+        <%= @category.errors.count %>errors prohibited this obj from being saved:</br>
+        <% @category.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      <%= form_with model: @category, url: admin_genre_path(@category.id), local:true do |f| %>
+        
+        <table class="table table-borderless col-7">
+          <tr>
+            <th><%= f.label :カテゴリ名 %></th>
+            <td><%= f.text_field :name, autofocus: true, id:"category_name" %></td>
+            <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+        </table>
+        
+      <% end %>
+    </div>
+  </div>
+
+</div>
