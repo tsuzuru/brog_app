@@ -10,7 +10,7 @@
           <%= message %>
         <% end %>
       <% end %>
-      <%= form_with model: @category, url: admin_genre_path(@category.id), local:true do |f| %>
+      <%= form_with model: @category, url: category_path(@category.id), local:true do |f| %>
         
         <table class="table table-borderless col-7">
           <tr>
