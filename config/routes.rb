@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'inquiry/index'
   resources :categories
   
   resources :articles do
