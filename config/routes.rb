@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
   resources :categories
-  resources :articles
-  resources :article_comments,only:[:create,:destroy]
+  
+  resources :articles do
+    resources :article_comments,only:[:create,:destroy]
+  end
+  
   devise_for :admins
   root to: 'homes#top'
   

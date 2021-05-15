@@ -21,7 +21,7 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= article.title %></td>
-        <td><%= article.body %></td>
+        <td><%= truncate(article.body) %></td>
         <td><%= article.category.name %></td>
         <td><%= article.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= link_to 'Show', article %></td>
