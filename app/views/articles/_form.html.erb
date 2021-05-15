@@ -13,25 +13,45 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title , :size => "50*50" %>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class='form-group'>
+    <div id='editor'>
+      <%= form.label :body %>
+      <%= form.text_area :body, rows: 5, class: 'form-control', id: 'article_body', "v-model" => "input", name: "article[body]" %><br>
+      <strong><h3 class="text-center">プレビュー表示</h3></strong>
+    <div v-html='input | marked'></div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :image_id %>
-    <%= form.text_field :image_id %>
-  </div>
+  <!--<div class="field">-->
+    <%#= form.label :image_id %>
+    <%#= form.text_field :image_id %>
+  <!--</div>-->
 
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: "-- 選択してください --") %>
+    <%#= form.number_field :category_id %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+  <!-- リアルタイムプレビュー -->
+<script type="text/javascript">
+window.onload = function() {
+new Vue({
+el: '#editor',
+data: {
+input: '<%== j article.body %>',
+},
+filters: {
+marked: marked,
+},
+});
+};
+</script>

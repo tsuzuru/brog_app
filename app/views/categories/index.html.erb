@@ -30,11 +30,9 @@
           <% @categories.each do |category| %>
         <tr>
           <th><%= category.name %></th>
-          <td><%= link_to "編集する", edit_category_path(category), class: 'btn btn-success' %></td>
+          <th><%= link_to "編集する", edit_category_path(category), class: 'btn btn-success' %></th>
         </tr>
           <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+      </tbody>
+    </table>
 </div>
