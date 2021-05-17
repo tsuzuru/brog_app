@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :article_comments,only:[:create,:destroy]
   end
   
+  get 'search' => 'articles#search'
+  
+  get 'search/search'
+  # get '/search', to: 'search#search'
+  
   devise_for :admins
   root to: 'homes#top'
   
