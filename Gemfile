@@ -70,5 +70,13 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
+# markdown＆プレヴュー機能
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
+
+gem 'ransack'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
