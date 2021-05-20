@@ -1,5 +1,5 @@
 module MarkdownHelper
-def markdown(body)　#()内はカラム名を入れる
+def markdown(body) #()内はカラム名を入れる
 options = {
 filter_html: true,
 hard_wrap: true,
