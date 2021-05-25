@@ -55,12 +55,6 @@
         <%= link_to "問い合わせ", inquiry_index_path, class: 'nav-link text-light' %>
       </li>
       <li class="nav-item">
-        <%= link_to "新規登録", new_admin_registration_path, class: 'nav-link text-light' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "ログイン", new_admin_session_path, class: 'nav-link text-light' %>
-      </li>
-      <li class="nav-item">
         <dl class="searchbox">
             <%= search_form_for @search, url: root_path do |f| %>
               <dt><%= f.text_field :title_or_body_cont ,placeholder: '検索するテキストを入力...' %>

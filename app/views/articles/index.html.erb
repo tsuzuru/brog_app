@@ -25,8 +25,8 @@
         <td class = "align-middle"><%= truncate(article.body) %></td>
         <td class = "align-middle"><%= article.category.name %></td>
         <td class = "align-middle">
-          Create<br><%= article.created_at.strftime('%Y/%m/%d') %><br>
-          Update<br><%= article.updated_at.strftime('%Y/%m/%d') %>
+          <i class="far fa-clock"></i><br><%= article.created_at.strftime('%Y/%m/%d') %><br>
+          <i class="fa fa-history"></i><br><%= article.updated_at.strftime('%Y/%m/%d') %>
         </td>
         <td class = "align-middle"><%= link_to 'Show', article %></td>
         <td class = "align-middle"><%= link_to 'Edit', edit_article_path(article) %></td>

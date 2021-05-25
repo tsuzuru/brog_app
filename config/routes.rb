@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
   
   get 'inquiry/index'
+  get 'search' => 'articles#search'
   resources :categories
-  
+  resources :homes, param: :id, only:[:index]
   resources :articles, param: :id do
     resources :article_comments,only:[:create,:destroy]
   end
-  
-  get 'search' => 'articles#search'
-  
-  resources :homes, param: :id
-  #get 'home/index'  
-  # get 'search/search'
-  #get '/search', to: 'home#index'
-  
   
   devise_for :admins
   root to: 'homes#top'

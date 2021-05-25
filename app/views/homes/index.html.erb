@@ -1,18 +1,14 @@
 <div class = "container">
+  
+  <%= image_tag "line_212190650678320 (2).jpg", width: '100%', height: '300' %>
+  
   <div class = "row">
-    <div class = "col-2 my-5 title" >
-      <% if @category==0 %>
-        <h4 class = "" >カテゴリ一覧</h4>
-      <% else %>
+    <div class = "my-5 title" >
         <h4>「<%= @category.name %>」一覧</h4>
-      <% end %>
     </div>
 
-    <div class = "col-2 my-5" >
-      <p>(全<%= @article_amount %>件)</p>
-    </div>
     
-    <div class="col-3 offset-5 my-5 search-form">
+    <div class="offset-9">
       <%= form_with url: homes_path, method: :get, local: true do |f| %>
         <%= f.collection_select(:category_id, Category.all, :id, :name) %>
         <%= f.submit '検索' %>
@@ -20,7 +16,7 @@
     </div>
   </div>
   
-  <table>
+  <table class="table">
     <tbody>
       <% @articles.each do |article| %>
         <tr>
@@ -29,12 +25,12 @@
               <%= attachment_image_tag article, :image, size: "150x120" %>
             <% end %>
           </td>
-          <td><h3><%= link_to article.title, article, :style=>"color:black;" %></h3></td>
-          <td class = "align-middle"><%= article.category.name %></td>
-          <td class = "align-middle">
-            Create<br><%= article.created_at.strftime('%Y/%m/%d') %>
+          <td>
+            <div class="p-1 col-3 bg-secondary text-white text-center"><%= article.category.name %></div>
+            <h3><%= link_to article.title, article, :style=>"color:black;" %></h3>
+            <i class="far fa-clock"><%= article.created_at.strftime('%Y/%m/%d') %></i>
+            <i class="fa fa-history"><%= article.updated_at.strftime('%Y/%m/%d') %></i>
           </td>
-          
         </tr>
       <% end %>
     </tbody>

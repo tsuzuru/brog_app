@@ -1,8 +1,8 @@
+<p id="notice"><%= notice %></p>
+
 <div class="container">
   
-  <div class = "col-2 my-5 title" >
-    <h4>カテゴリ編集</h4>
-  </div>
+    <h1>Editing Category</h1><br>
   
       <% if @category.errors.any? %>
         <%= @category.errors.count %>errors prohibited this obj from being saved:</br>
@@ -14,9 +14,9 @@
         
         <table class="table table-borderless col-7">
           <tr>
-            <th><%= f.label :カテゴリ名 %></th>
+            <th><%= f.label :Category %></th>
             <td><%= f.text_field :name, autofocus: true, id:"category_name" %></td>
-            <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+            <td><%= f.submit "変更を保存", :style=>"color:white;", class: 'btn btn-secondary' %></td>
         </table>
         
       <% end %>

@@ -1,38 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
+  
+  <div class="p-1 mb-2 col-2 bg-secondary text-white text-center"><%= @article.category.name %></div>
 
-<h2 class="card-header bg-success text-white"><%= @article.title %></h2>
-    <div class="card-body">
+  <h2><%= @article.title %></h2>
 
-<p>
-  <strong>Category:</strong>
-  <%= @article.category.name %>
-</p>
-
-<p>
-  Create<%= @article.created_at.strftime('%Y/%m/%d') %><br>
-  Update<%= @article.updated_at.strftime('%Y/%m/%d') %>
-</p>
-
-<p>
-  <%= markdown("#{@article.body}") %>
-</p>
-    </div>
+  <p class="offset-9">
+    <i class="far fa-clock"><%= @article.created_at.strftime('%Y/%m/%d') %></i>
+    <i class="fa fa-history"><%= @article.updated_at.strftime('%Y/%m/%d') %></i>
+  </p>
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <p>
+    <%= markdown("#{@article.body}") %>
+  </p>
+
+<% if admin_signed_in? %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %><br>
+<% else %>
+  <%= link_to 'Back', root_path %><br>
+<% end %>
 
 
-<h4>コメント</h4>
+<h4 class = my-3>コメント</h4>
   <% @article.article_comments.each do |article_comment| %>
     <p>
-      <%= article_comment.name %>: <%= article_comment.comment %>
-      <%= link_to '削除', [article_comment.article, article_comment],
-                  :confirm => 'よろしいですか？',
-                  :method => :delete %>
-
+      <%= article_comment.name %><br>
+      <%= article_comment.created_at.strftime('%Y/%m/%d') %><br>
+      <%= article_comment.comment %>
+      <% if admin_signed_in? %>
+        <%= link_to '削除', [article_comment.article, article_comment],
+                    :confirm => 'よろしいですか？',
+                    :method => :delete %>
+      <% else %>
+      <% end %>
     </p>
   <% end %>
 
@@ -40,14 +43,14 @@
   <%= form_for([@article, @article.article_comments.build]) do |f| %>
     <div class="field mb-2">
       <%= f.label :name %><br>
-      <%= f.text_field :name, placeholder: 'お名前', class: 'form-control' %>
+      <%= f.text_field :name, placeholder: 'ニックネーム', class: 'form-control' %>
     </div>
     <div class="field mb-2">
       <%= f.label :comment %><br>
       <%= f.text_area :comment, placeholder: '本文を入力してください',class: 'form-control' %>
     </div>
     <div class="actions">
-      <%= f.submit "投稿する", class: 'btn btn-block btn-success btn-sm' %>
+      <%= f.submit "投稿する", class: 'btn btn-block btn-secondary btn-sm' %>
     </div>
   <% end %>
 </div>
